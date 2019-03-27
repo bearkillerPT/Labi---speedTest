@@ -13,7 +13,10 @@ def usage(message):
     exit(1)
 
 
-def validate():
+def validate() -> None:
+    """This function will validate the input made through the terminal in the sys.argv variable
+    :return: None
+    """
     global interval, num, s_id, country
     try:
         interval = int(argv[1])
@@ -52,7 +55,7 @@ def id_test_4(server_id: int) -> SpeedTestResult:
 
 
 # TODO criação do report no fim do teste
-def report_8(results: List[SpeedTestResult], reportName: str) -> None:
+def report_8(results: List[SpeedTestResult], report_name: str) -> None:
     """ This function will generate a test report based on the results
     obtained in the network tests.
     :param results, list of speed_test_result objects of which the report will be created.
@@ -89,10 +92,18 @@ def run_tests(interval, num, id_or_country):
     :param id_or_country: country or id of the target server
     :return: SpeedTestResult list with results
     """
-    if(type(id_or_country) == type(1)):
+    if(type(id_or_country) == int):
         s_id = id_or_country
     else:
         country = id_or_country
+
+
+def create_signed_document(key_path: str, signature_name: str) -> None:
+    """This function will generate a file with the signature of the report, hashing it with sha256
+    :param key_path: The path to the file that contains the key
+    :param signature_name: The name of the signature file that will be generated
+    :return: None
+    """
 
 
 if __name__ == '__main__':

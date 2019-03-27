@@ -12,7 +12,7 @@ class SpeedTestResult:
         :param download_time: time that took to do the download.
         :param latency: latency of the connection to the server.
         """
-        #assert type(server_id) == int and type(download_size) == int and type(download_time) == float and type(latency) == int
+        assert type(server_id) == int and type(download_size) == int and type(download_time) == float and type(latency) == int
         self.server_id = server_id
         self.download_size = download_size
         self.download_time = download_time
@@ -37,3 +37,5 @@ class SpeedTestResult:
         check_hash.update(concat_attrib.encode())
         check = check_hash.hexdigest()
         return [self.count, self.server_id, str(self.date), self.latency, self.getDownloadSpeed(), check]
+
+
