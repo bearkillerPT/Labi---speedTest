@@ -1,12 +1,18 @@
+import sys
 from sys import argv, exit
 from speed_test_result import SpeedTestResult
 from typing import List
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_OAEP
+from Crypto.Hash import SHA256
+import Crypto
 import json
 import random
 import csv
 import socket
 import time
-MB = 1000000
+
+MB = 1024 ** 2
 interval = 0
 num = 0
 s_id = 0
@@ -99,6 +105,7 @@ def report_8(results: List[SpeedTestResult], report_name: str) -> None:
     create_signed_document("key.priv", "report.sig")
 
 
+
 def calc_download(server: dict) -> (float, float):
     """ This function will calculate the download time
     :param server, target server.
@@ -113,33 +120,23 @@ def calc_download(server: dict) -> (float, float):
         print("error")
         return 0
 
+
+    s.send(b"DOWNLOAD 100000000\n")
+    received = b""
     c_time = time.time()
-
+    e_time = time.time() - c_time
+    while(len(received) and e_time < 2):
+        received = s.recv(1024)
+        e_time = time.time() - c_time
+    while(len(s.recv(32)) != 0): pass
     s.send(("DOWNLOAD " + str(MB) + "\n").encode())
-    s.recv(MB)
+    c_time = time.time()
+    a = s.recv(MB, (socket.MSG_WAITALL))
+    e_time = time.time() - c_time
     s.send(b"QUIT \n")
-    return 1/(time.time() - c_time)
+    s.close()
+    return 1/(e_time)
 
-
-    #
-    # chunk_size = 0
-    # for _ in range(10):
-    #     s.send(("DOWNLOAD " + str(1 * MB) + "\n").encode())
-    #     chunk_size += len(s.recv(int(100 * MB)))
-    # total = ""
-    # c_time = time.time()
-    # s.send(("DOWNLOAD " + str(100 * MB) + "\n").encode())
-    # while(100 * MB > len(total) > 0 and time.time() - c_time < 10):
-    #     received = s.recv(int(chunk_size))
-    #     total += received.decode()
-    #
-    # while s.recv(chunk_size): pass
-    # s.send(("DOWNLOAD " + str(1 * MB) + "\n").encode())
-    # c_time = time.time()
-    # s.recv(MB)
-    # e_time = time.time() - c_time
-    # s.send(b"QUIT \n")
-    # return 1/e_time
 
 
 def calc_latency(server: dict) -> int:
@@ -189,12 +186,31 @@ def run_tests(interval, num, id_or_country) -> List[SpeedTestResult]:
     return result
 
 
-def create_signed_document(key_path: str, signature_name: str) -> None:
-    """This function will generate a file with the signature of the report, hashing it with sha256
+def create_signed_document(key_path: str, report_name: str, signature_name: str) -> None:
+    """This function will generate a file with the signature of the report
     :param key_path: The path to the file that contains the key
     :param signature_name: The name of the signature file that will be generated
     :return: None
     """
+    key = None
+    with open(key_path, 'r') as key_file:
+        key = RSA.importKey(key_file.read())
+
+    signed_doc = None
+    with open(report_name, 'r') as rep:
+        report_string = rep.read()
+
+    report_string += (len(report_string) % 128) * " "
+    report_splited_bstring = []
+    for i in range(0,len(report_string),len(report_string)//128):
+        report_splited_bstring.append(report_string[i:i+len(report_string)//128].encode('utf-8'))
+
+    cipher = PKCS1_OAEP.new(key)
+    output = bytearray()
+    with open(signature_name, 'wb') as o_file:
+        for i in report_splited_bstring:
+            o_file.write(cipher.encrypt(i))
+
 
 
 if __name__ == '__main__':
@@ -205,4 +221,5 @@ if __name__ == '__main__':
     validate()
     testes = run_tests(interval, num, 1902)
     report_8(testes, "report.csv")
+    create_signed_document("key.priv", "report.csv", "report.sig")
 
