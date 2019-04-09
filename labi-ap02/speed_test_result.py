@@ -30,6 +30,6 @@ class SpeedTestResult:
         check_hash = hashlib.sha256()
         check_hash.update(concat_attrib.encode())
         check = check_hash.hexdigest()
-        return {"Contador": self.count, "Id Do Servidor": self.server_id, "Data e Hora no Formato ISO": str(self.date), "Latência": self.latency, "Largura de Banda": self.download_speed, "Check": check}
+        return {"Contador": self.count, "Id Do Servidor": self.server_id, "Data e Hora no Formato ISO": str(self.date), "Latencia": self.latency, "Largura de Banda": self.download_speed, "Check": check}
 
 
