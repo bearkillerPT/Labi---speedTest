@@ -1,0 +1,160 @@
+\documentclass{report}
+\usepackage[T1]{fontenc} % Fontes T1
+\usepackage[utf8]{inputenc} % Input UTF8
+\usepackage[backend=biber, style=ieee]{biblatex} % para usar bibliografia
+\usepackage{csquotes}
+\usepackage[portuguese]{babel} %Usar língua portuguesa
+\usepackage{blindtext} % Gerar texto automaticamente
+\usepackage[printonlyused]{acronym}
+\usepackage{hyperref} % para autoref
+\usepackage{graphicx}
+
+\bibliography{bibliografia}
+
+
+\begin{document}
+%%
+% Definições
+%
+\def\titulo{Trabalho de aprofundamento AP2}
+\def\data{9 de Abril de 2019}
+\def\autores{André Patacas, Gil Teixeira}
+\def\autorescontactos{(93357) andrepatacas@ua.pt, (88194) gilteixeira@ua.pt}
+\def\departamento{DETI}
+\def\logotipo{ua.pdf}
+%
+%%%%%% CAPA %%%%%%
+%
+\begin{titlepage}
+
+\begin{center}
+%
+\vspace*{50mm}
+%
+{\Huge \titulo}\\ 
+%
+%
+\vspace{10mm}
+%
+{\LARGE \autores}\\ 
+%
+\vspace{30mm}
+%
+\begin{figure}[h]
+\center
+\includegraphics{\logotipo}
+\end{figure}
+%
+\vspace{30mm}
+\end{center}
+%
+\begin{flushright}
+\end{flushright}
+\end{titlepage}
+
+%%  Página de Título %%
+\title{%
+{\Huge\textbf{Aplicação para o cálculo de Largura de Banda e de latência}}\\
+{\Large \departamento}
+}
+%
+\author{%
+    \autores \\
+    \autorescontactos
+}
+%
+\date{\data}
+%
+\maketitle
+
+\pagenumbering{roman}
+
+%%%%%% RESUMO %%%%%%
+\begin{abstract}
+Este relatório serve para descrever uma ferramenta desenvolvida para calcular a largura de banda e a latência da máquina, onde a aplicação se encontra a correr, a um determinado servidor ou a um conjunto, de cardinalidade especificável, de servidores de um país, sendo este também especificável.
+
+\end{abstract}
+
+%%%%%% Agradecimentos %%%%%%
+% Segundo glisc deveria aparecer após conclusão...
+\renewcommand{\abstractname}{Agradecimentos}
+\begin{abstract}
+Eventuais agradecimentos.
+Comentar bloco caso não existam agradecimentos a fazer.
+\end{abstract}
+
+
+\tableofcontents
+% \listoftables     % descomentar se necessário
+% \listoffigures    % descomentar se necessário
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\pagenumbering{arabic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Introdução}
+\label{chap.introducao}
+
+A aplicação foi desenvolvida em python3 no âmbito da disciplina de Laboratórios de Informática, no ano letivo 2018/2019. A adicionar às especificações básicas pedidas, segundo o guião sobre regras do segundo trabalho de aprofundamento, construi-se ainda suporte para pydocs para haver uma explicação mais detalhada sobre cada método e classe no nosso projeto. O programa foi escrito com base em test driven development (\autoref{chap.metodologia}) e como tal os testes unitários e funcionais foram criados primeiro, seguidos por um esqueleto do programa e finalmente por vários updates a ambos ({chap.resultados}) para chegar ao estado em que a aplicação se encontra de momento (\autoref{chap.analise}). Finalmente são tiradas as conclusões sobre os aspetos positivos e, potencialmente, negativos desta solução em concreto (\autoref{chap.conclusao})
+
+
+\chapter{Metodologia}
+\label{chap.metodologia}
+
+\begin{enumerate}
+	\item Criar o esqueleto do programa que é agora o inicializador da classe se esta for chamada como main. (if \_\_name\_\_ == '\_\_main\_\_':);
+	\item Criar o ficheiro test\_labi\_02 como um teste que, apenas se a construção da aplicação for robusta e exatamente como especificada, passa.
+	\item Criar o programa labi\_02 e definir as funções com os argumentos de entrada e cada uma com uma descrição detalhada, disponivel nos pydocs, dos aspetos funcionais de cada função.
+	\item Ajustar os métodos de forma a que a aplicação passa todos os testes impostos no teste criado.
+	\item Testar o programa manualmente e/ou com testes funcionais.
+	\item Corrigir eventuais erros.
+	\item Iterar o processo de debugging e correção de erros.
+\end{enumerate}
+
+\section{Exemplos}
+
+\subsection{Utilização de acrónimos}
+Esta é a primeira invocação do acrónimo \ac{ua}.
+E esta é a segunda: \ac{ua}.
+
+Outras duas referências a \ac{miect}
+e \ac{miect}.
+
+\subsection{Referências bibliográficas}
+Informação relativa à estrutura formal de um relatório pode ser obtida
+na página do \ac{glisc}\cite{glisc}.
+
+\chapter{Resultados}
+\label{chap.resultados}
+Descreve os resultados obtidos.
+
+\chapter{Análise}
+\label{chap.analise}
+Analisa os resultados.
+
+\chapter{Conclusões}
+\label{chap.conclusao}
+Apresenta conclusões.
+
+\chapter*{Contribuições dos autores}
+Resumir aqui o que cada autor fez no trabalho.
+Usar abreviaturas para identificar os autores,
+por exemplo AS para António Silva.
+No fim indicar a percentagem de contribuição de cada autor.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Acrónimos}
+\begin{acronym}
+\acro{ua}[UA]{Universidade de Aveiro}
+\acro{miect}[MIECT]{Mestrado Integrado em Engenharia de Computadores e Telemática}
+\acro{lei}[LEI]{Licenciatura em Engenharia Informática}
+\acro{glisc}[GLISC]{Grey Literature International Steering Committee}
+\end{acronym}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\printbibliography
+
+\end{document}

@@ -259,7 +259,7 @@ def load_server():
         servers = servers_file['servers']
 if __name__ == '__main__':
     """Main function that will be executed, if and only if, the current file is the main module"""
-
+    load_server()
     validate()
     testes = run_tests(interval, num, id_or_country)
     report_8(testes, "report.csv")
