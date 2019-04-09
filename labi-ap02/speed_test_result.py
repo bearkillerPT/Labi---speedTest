@@ -32,4 +32,5 @@ class SpeedTestResult:
         check = check_hash.hexdigest()
         return {"Contador": self.count, "Id Do Servidor": self.server_id, "Data e Hora no Formato ISO": str(self.date), "Latencia": self.latency, "Largura de Banda": self.download_speed, "Check": check}
 
-
+if __name__ == "__main__":
+    print("This is not a runnable Class")

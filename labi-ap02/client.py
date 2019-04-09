@@ -17,17 +17,15 @@ num = 0
 id_or_country = ""
 servers = None
 verbose = False
-
+TIMEOUT = 10
 
 def usage(message: str):
     print(message, end='')
     print("Usage python3 " + argv[0].split("/")[-1] + " interval num [country or id] [option]")
     exit(1)
 
-
 def log(message: str, color: str):
     print(colored(message, color), end="")
-
 
 def log_error(message):
     log(message, 'red')
@@ -66,7 +64,13 @@ def validate() -> None:
     except ValueError as e:
         usage("Invalid Argument Type: " + e.args[0].split('\'')[1] + "\n")
 
+def load_server():
+    global servers
+    with open("servers.json", 'r') as s_file:
+        servers_file = json.load(s_file)
+        servers = servers_file['servers']
 
+# Tested
 def random_test() -> SpeedTestResult:
     """ This function will test the connection speed and latency
     with a random server.
@@ -81,8 +85,8 @@ def random_test() -> SpeedTestResult:
     i_latency = calc_latency(target_server)
     return (SpeedTestResult(i_server_id, i_download_speed, i_latency))
 
-
-def country_test_3(country: str) -> SpeedTestResult:
+# Tested
+def country_test(country: str) -> SpeedTestResult:
     """ This function will test the connection speed and latency
     with a random server of the country passed as argument.
     :param country, country where the target server is located.
@@ -97,8 +101,8 @@ def country_test_3(country: str) -> SpeedTestResult:
     i_latency = calc_latency(target_server)
     return (SpeedTestResult(i_server_id, i_download_speed, i_latency))
 
-
-def id_test_4(server_id: int) -> SpeedTestResult:
+# Tested
+def id_test(server_id: int) -> SpeedTestResult:
     """ This function will test the connection speed and latency
     with a random server of the country passed as argument.
     :param server_id, id of target server.
@@ -113,12 +117,12 @@ def id_test_4(server_id: int) -> SpeedTestResult:
     i_latency = calc_latency(target_server)
     return (SpeedTestResult(i_server_id, i_download_speed, i_latency))
 
-
-def report_8(results: List[SpeedTestResult], report_name: str) -> None:
+# Tested
+def report(results: List[SpeedTestResult], report_name: str) -> None:
     """ This function will generate a test report based on the results
     obtained in the network tests.
     :param results, list of speed_test_result objects of which the report will be created.
-    :param reportName, a string with the name of the output report file.
+    :param report_name, a string with the name of the output report file.
     :return nothing, the generated report will be output as a file.
     """
     log_verbose("Starting Report Creation Phase\n")
@@ -128,20 +132,26 @@ def report_8(results: List[SpeedTestResult], report_name: str) -> None:
         writer.writeheader()
         for i in results:
             writer.writerow(i.getObjDict())
-    create_signed_document("key.priv", "report.csv", "report.sig")
-    log_verbose("Report and Sign Created")
+    log_verbose("Report Created")
 
-
+# Tested
 def calc_download(server: dict) -> float:
     """ This function will calculate the download time
     :param server, target server.
     :return floating point download speed
     """
+    global TIMEOUT
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.settimeout(1)
-    s_url = server['host'].split(':')[0]
-    s_port = int(server['host'].split(':')[1])
-    log_verbose("    Starting Download Speed Test to " + s_url + "\n")
+    s.settimeout(TIMEOUT)
+    try:
+        s_url = server['host'].split(':')[0]
+        s_port = int(server['host'].split(':')[1])
+        log_verbose("    Starting Download Speed Test to " + s_url + "\n")
+    except:
+        log_error("      Invalid Server \n")
+        s.close()
+        return 0.0
+
     try:
         s.connect((s_url, s_port))
     except Exception as e:
@@ -154,12 +164,10 @@ def calc_download(server: dict) -> float:
     c_time = time.time()
     e_time = time.time() - c_time
     while (0 < len(received) < 100 * MB and e_time < 10):
-        received = s.recv((2**18))
+        received = s.recv(4096)
         buffer += received
         e_time = time.time() - c_time
-    with open("sena", "wb") as test: test.write(buffer)
-    print((len(buffer)/MB)/e_time)
-    print(e_time)
+
     s.send(b"QUIT \n")
     s.close()
     if (len(buffer) / MB < 1):
@@ -169,21 +177,30 @@ def calc_download(server: dict) -> float:
     log_verbose("    Download Speed Test done to " + s_url + ": "+ str(len(buffer) / (e_time * MB)) +"MB/s\n")
     return len(buffer) / (e_time * MB)
 
-
+# Tested
 def calc_latency(server: dict) -> int:
     """ This function will calculate the latency
     :param server, target server.
     :return integer, time, in ms, that the connection took
     """
+    global TIMEOUT
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.settimeout(1)
-    s_url = server['host'].split(':')[0]
-    s_port = int(server['host'].split(':')[1])
-    log_verbose("    Starting Latency Test to " + s_url + "\n")
+    s.settimeout(TIMEOUT)
+
+    try:
+        s_url = server['host'].split(':')[0]
+        s_port = int(server['host'].split(':')[1])
+        log_verbose("    Starting Latency Test to " + s_url + "\n")
+    except:
+        log_error("      Invalid Server \n")
+        s.close()
+        return -1
+
     try:
         s.connect((s_url, s_port))
     except Exception as e:
         log_error("      Unable to connect to " + s_url + "\n")
+        s.close()
         return -1
     time_list = []
     for _ in range(10):
@@ -193,11 +210,12 @@ def calc_latency(server: dict) -> int:
         time_list.append((time.time() - c_time) * 1000)
 
     s.send(b"QUIT \n")
+    s.close()
     time_average = sum(time_list) / len(time_list)
     log_verbose("    Latency Test done to " + s_url + ": " + str(round(time_average)) + "ms\n")
     return round(time_average)
 
-
+# Tested
 def run_tests(interval: int, num: int, id_or_country) -> List[SpeedTestResult]:
     """This function will make the tests based on parameter and return an array of SpeedTestResult
     :param interval: interval in which the test will be made
@@ -209,7 +227,7 @@ def run_tests(interval: int, num: int, id_or_country) -> List[SpeedTestResult]:
     result = []
     if (type(id_or_country) == int):
         for _ in range(num):
-            result.append(id_test_4(id_or_country))
+            result.append(id_test(id_or_country))
             time.sleep(interval)
     elif (len(id_or_country) == 0):
         for _ in range(num):
@@ -217,12 +235,12 @@ def run_tests(interval: int, num: int, id_or_country) -> List[SpeedTestResult]:
             time.sleep(interval)
     else:
         for _ in range(num):
-            result.append(country_test_3(id_or_country))
+            result.append(country_test(id_or_country))
             time.sleep(interval)
     log_verbose("Test Phase Ended\n")
     return result
 
-
+# Tested
 def create_signed_document(key_path: str, report_name: str, signature_name: str) -> None:
     """This function will generate a file with the signature of the report
     :param key_path: The path to the file that contains the key
@@ -231,11 +249,10 @@ def create_signed_document(key_path: str, report_name: str, signature_name: str)
     :return: None
     """
     log_verbose("  Starting to Sign the Report\n")
-    key = None
+
     with open(key_path, 'r') as key_file:
         key = RSA.importKey(key_file.read())
 
-    signed_doc = None
     with open(report_name, 'r') as rep:
         report_string = rep.read()
 
@@ -245,21 +262,18 @@ def create_signed_document(key_path: str, report_name: str, signature_name: str)
         report_split_bstring.append(report_string[i:i + len(report_string) // 128].encode())
 
     cipher = PKCS1_OAEP.new(key)
-    output = bytearray()
     with open(signature_name, 'wb') as o_file:
         for i in report_split_bstring:
             o_file.write(cipher.encrypt(i))
 
-    log_verbose("  Report Signed\n")
+    log_verbose("Report Signed\n")
 
-def load_server():
-    global servers
-    with open("servers.json", 'r') as s_file:
-        servers_file = json.load(s_file)
-        servers = servers_file['servers']
-if __name__ == '__main__':
+def main():
     """Main function that will be executed, if and only if, the current file is the main module"""
-    load_server()
     validate()
     testes = run_tests(interval, num, id_or_country)
-    report_8(testes, "report.csv")
+    report(testes, "report.csv")
+    create_signed_document("key.priv", "report.csv", "report.sig")
+
+if __name__ == '__main__':
+    main()
