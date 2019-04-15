@@ -1,0 +1,155 @@
+
+\documentclass{report}
+\usepackage{pgfplots}
+\usepackage[T1]{fontenc} % Fontes T1
+\usepackage[utf8]{inputenc} % Input UTF8
+\usepackage[nottoc]{tocbibind}
+\usepackage{csquotes}
+\usepackage[portuguese]{babel} %Usar língua portuguesa
+\usepackage{blindtext} % Gerar texto automaticamentez	
+\usepackage[printonlyused]{acronym}
+\usepackage{hyperref} % para autoref
+\usepackage{graphicx}
+
+
+\pgfplotsset{
+  compat=newest,
+  xlabel near ticks,
+  ylabel near ticks
+}
+\begin{document}
+%%
+% Definições
+%
+
+\def\titulo{Trabalho de aprofundamento AP2}
+\def\data{9 de Abril de 2019}
+\def\autores{André Patacas, Gil Teixeira}
+\def\autorescontactos{(93357) andrepatacas@ua.pt, (88194) gilteixeira@ua.pt}
+\def\departamento{DETI}
+\def\logotipo{ua.pdf}
+%
+%%%%%% CAPA %%%%%%
+%
+\begin{titlepage}
+
+\begin{center}
+%
+\vspace*{50mm}
+%
+{\Huge \titulo}\\ 
+%
+\vspace{10mm}
+%
+{\LARGE \autores}\\ 
+%
+\vspace{30mm}
+%
+\begin{figure}[h]
+\center
+\includegraphics{\logotipo}
+\end{figure}
+%
+\vspace{30mm}
+\end{center}
+%
+\begin{flushright}
+
+\end{flushright}
+\end{titlepage}
+
+%%  Página de Título %%
+\title{%
+{\Huge\textbf{Aplicação para o cálculo de Largura de Banda e de latência}}\\
+{\Large \departamento}
+}
+%
+\author{%
+    \autores \\
+    \autorescontactos 
+}
+
+%
+\date{\data}
+%
+\maketitle
+
+\pagenumbering{roman}
+
+
+
+
+
+\tableofcontents
+% \listoftables     % descomentar se necessário
+% \listoffigures    % descomentar se necessário
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\pagenumbering{arabic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% RESUMO %%%%%%
+\begin{abstract}
+Este relatório serve para descrever uma ferramenta desenvolvida para calcular a largura de banda e a latência da máquina, onde a aplicação se encontra a correr, a um determinado servidor ou a um conjunto, de cardinalidade especificável, de servidores de um país, sendo este também especificável.
+
+\end{abstract}
+
+
+\chapter{Introdução}
+\label{chap.introducao}
+
+A aplicação foi desenvolvida em python3 no âmbito da disciplina de Laboratórios de Informática, no ano letivo 2018/2019. A adicionar às especificações básicas pedidas, segundo o guião sobre regras do segundo trabalho de aprofundamento, construi-se ainda suporte para pydocs para haver uma explicação mais detalhada sobre cada método e classe no nosso projeto. O programa foi escrito com base em test driven development (\autoref{chap.metodologia}) e como tal os testes unitários e funcionais foram criados primeiro, seguidos por um esqueleto do programa e finalmente por vários updates a ambos ({chap.resultados}) para chegar ao estado em que a aplicação se encontra de momento (\autoref{chap.analise}). Finalmente são tiradas as conclusões sobre os aspetos positivos e, potencialmente, negativos desta solução em concreto (\autoref{chap.conclusao})
+
+
+\chapter{Metodologia}
+\label{chap.metodologia}
+
+\begin{enumerate}
+	\item Criar o esqueleto do programa que é agora o inicializador da classe (labi02) se esta for chamada diretamente;
+	\item Criar o ficheiro test\_labi\_02 como um teste que, apenas se a construção da aplicação for robusta e exatamente como especificada, passa.
+	\item Criar o programa labi\_02 e definir as funções com os argumentos de entrada e cada uma com uma descrição detalhada, disponivel nos pydocs, dos aspetos funcionais de cada função.
+	\item Ajustar os métodos de forma a que a aplicação passa todos os testes impostos no teste criado.
+	\item Testar o programa manualmente e/ou com testes funcionais.
+	\item Corrigir eventuais erros.
+	\item Iterar o processo de debugging e correção de erros.
+\end{enumerate}
+
+
+\chapter{Aplicação de Speed Test}
+\label{chap.Aplicação de Speed Test}
+\section{Labi\_02}
+\hspace{5mm}Esta é a aplicação que foi desenvolvida e que pode ser utilizada diretamente de acordo com o usage demonstrado ao correr a aplicação sem argumentos. Toda a descrição feita neste relatório remete na mesma para a documentação, esta criada a quando do desenvolvimento da aplicação.
+
+\subsection{calc\_download}
+\hspace{5mm}Cálculo da largura de banda:\\
+Este método pede, inicialmente, para fazer um download de 100 megabytes ao target server dentro de 10 segundos. Depois verifica que não há mais data para ser recebida do \textit{target\_server} e finalmente calcula o time download 1mb que a máquina demora a fazer download de 1 megabyte.\\ 
+\hspace{5mm}\textbf{Argumentos}: \textit{target\_server}(dicionário com informação sobre o target server). 
+\hspace{5mm}\textbf{Retorna}: float(1/\textit{time\_download\_1mb})
+
+\subsection{calc\_latency}
+\hspace{5mm}Cálculo da latência:\\ 
+Este método tenta trocar dez comandos PING-PONG com o targe-server e calcula o tempo médio em milisegundos entre estas trocas.\\
+\hspace{5mm}\textbf{Argumentos}: target server(dicionário com informação sobre o target server). 
+\hspace{5mm}\textbf{Retorna}: int(tempo entre trocas em ms).
+
+\subsection{country\_test}
+\hspace{5mm}Este método serve para calcular o tempo de download e latency a um servidor random do país passado como argumento:\\ 
+\hspace{5mm}\textbf{Argumentos}: target country(str).\\
+\hspace{5mm}\textbf{Retorna}: objeto \textit{SpeedTestResult} com as informações relativas aos resultados do teste.
+
+\chapter{Resultados}
+\label{chap:resultados}
+\chapter{Análise}
+\label{chap:analise}
+\chapter{Conclusão}
+\label{chap:conclusao}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
