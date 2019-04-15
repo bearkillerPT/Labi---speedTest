@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.13)  15 APR 2019 17:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.13)  15 APR 2019 18:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1046,7 +1046,7 @@ LaTeX Info: Redefining \nameref on input line 20.
 \@outlinefile=\write5
 \openout5 = `Diabetes.out'.
 
-<ua.pdf, id=47, 52.195pt x 55.20625pt>
+<ua.pdf, id=67, 52.195pt x 55.20625pt>
 File: ua.pdf Graphic file (type pdf)
 <use ua.pdf>
 Package pdftex.def Info: ua.pdf  used on input line 50.
@@ -1145,64 +1145,79 @@ Package babel Info: Redefining portuges shorthand "|
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 137.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 142.
+(babel)             in language  on input line 143.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 142.
+(babel)             in language  on input line 143.
 [3
 
 ]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 142.
+(babel)             in language  on input line 143.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 142.
+(babel)             in language  on input line 153.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 158.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 163.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 172.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 177.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 177.
  [4]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 183.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 183.
+ [5]
 Cap\'{\i }tulo 4.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 142.
+(babel)             in language  on input line 183.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 144.
+(babel)             in language  on input line 185.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 144.
-[5
+(babel)             in language  on input line 185.
+[6
 
 ]
 Cap\'{\i }tulo 5.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 144.
+(babel)             in language  on input line 185.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 146.
+(babel)             in language  on input line 187.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 146.
-[6
+(babel)             in language  on input line 187.
+[7
 
 ]
 Cap\'{\i }tulo 6.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 146.
+(babel)             in language  on input line 187.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 155.
+(babel)             in language  on input line 196.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 155.
-[7
+(babel)             in language  on input line 196.
+[8
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 155.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 155.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 196.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 196.
  (./Diabetes.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 155.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 155.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 196.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 196.
 Package rerunfilecheck Info: File `Diabetes.out' has not changed.
-(rerunfilecheck)             Checksum: 98F799548C556536D015FB1E28D25CED;560.
+(rerunfilecheck)             Checksum: D6B658EDD3AE0BC1532B6AA964A7CC01;900.
 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 27172 strings out of 494862
- 647532 string characters out of 6178945
- 825336 words of memory out of 5000000
- 30034 multiletter control sequences out of 15000+600000
+ 27193 strings out of 494862
+ 647802 string characters out of 6178945
+ 827382 words of memory out of 5000000
+ 30041 multiletter control sequences out of 15000+600000
  15548 words of font info for 35 fonts, out of 8000000 for 9000
  38 hyphenation exceptions out of 8191
  75i,6n,128p,904b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1216,11 +1231,13 @@ ome/gil/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </ho
 me/gil/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </hom
 e/gil/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </home
 /gil/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk> </home/
-gil/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm2488.600pk>
-Output written on Diabetes.pdf (11 pages, 97930 bytes).
+gil/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm2488.600pk></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on Diabetes.pdf (12 pages, 121637 bytes).
 PDF statistics:
- 436 PDF objects out of 1000 (max. 8388607)
- 153 compressed objects within 2 object streams
- 27 named destinations out of 1000 (max. 500000)
- 98 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 508 PDF objects out of 1000 (max. 8388607)
+ 200 compressed objects within 2 object streams
+ 41 named destinations out of 1000 (max. 500000)
+ 138 words of extra memory for PDF output out of 10000 (max. 10000000)
 

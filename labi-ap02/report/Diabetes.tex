@@ -123,21 +123,62 @@ A aplicação foi desenvolvida em python3 no âmbito da disciplina de Laboratór
 \hspace{5mm}Esta é a aplicação que foi desenvolvida e que pode ser utilizada diretamente de acordo com o usage demonstrado ao correr a aplicação sem argumentos. Toda a descrição feita neste relatório remete na mesma para a documentação, esta criada a quando do desenvolvimento da aplicação.
 
 \subsection{calc\_download}
-\hspace{5mm}Cálculo da largura de banda:\\
+\hspace{5mm}Cálculo da largura de banda.\\
 Este método pede, inicialmente, para fazer um download de 100 megabytes ao target server dentro de 10 segundos. Depois verifica que não há mais data para ser recebida do \textit{target\_server} e finalmente calcula o time download 1mb que a máquina demora a fazer download de 1 megabyte.\\ 
 \hspace{5mm}\textbf{Argumentos}: \textit{target\_server}(dicionário com informação sobre o target server). 
-\hspace{5mm}\textbf{Retorna}: float(1/\textit{time\_download\_1mb})
+\hspace{5mm}\textbf{Retorna}: (float) $1/\textit{time\_download\_1mb}$
 
 \subsection{calc\_latency}
-\hspace{5mm}Cálculo da latência:\\ 
+\hspace{5mm}Cálculo da latência.\\ 
 Este método tenta trocar dez comandos PING-PONG com o targe-server e calcula o tempo médio em milisegundos entre estas trocas.\\
-\hspace{5mm}\textbf{Argumentos}: target server(dicionário com informação sobre o target server). 
-\hspace{5mm}\textbf{Retorna}: int(tempo entre trocas em ms).
+\hspace{5mm}\textbf{Argumentos}: target server (dicionário com informação sobre o target server). 
+\hspace{5mm}\textbf{Retorna}:(int) \textit{average\_trade\_time} em ms.
 
 \subsection{country\_test}
-\hspace{5mm}Este método serve para calcular o tempo de download e latency a um servidor random do país passado como argumento:\\ 
-\hspace{5mm}\textbf{Argumentos}: target country(str).\\
-\hspace{5mm}\textbf{Retorna}: objeto \textit{SpeedTestResult} com as informações relativas aos resultados do teste.
+\label{subsec.countrytest}
+\hspace{5mm}Este método serve para calcular a largura de banda e latency da conexção a um servidor random do país passado como argumento.\\ 
+\hspace{5mm}\textbf{Argumentos}: (str) \textit{target\_country}.\\
+\textbf{Retorna}: objeto \textit{SpeedTestResult} com as informações relativas aos resultados do teste.
+
+\subsection{create\_signed\_document}
+\hspace{5mm}Este método gera um \textit{signature file} consoante.\\ 
+\hspace{5mm}\textbf{Argumentos}: 
+\begin{enumerate}
+\item \textit{key\_path} (str): The path to the file that contains the key;
+\item \textit{report\_name} (str): Nome do \textit{report} a ser assinado;
+\item \textit{signature\_name} (str): Nome do \textit{signature file} que será gerado.	
+\end{enumerate}
+\textbf{Retorna}: \textit{None}.
+
+\subsection{id\_test}
+\hspace{5mm}Este método serve para calcular a largura de banda e latency da conexão a um servidor com o id passado como argumento.\\ 
+\hspace{5mm}\textbf{Argumentos}: (int) \textit{target\_id}.\\
+\textbf{Retorna}: objeto \textit{SpeedTestResult} com as informações relativas aos resultados do teste.
+
+\subsection{random\_test}
+\hspace{5mm}Este método serve para calcular a largura de banda e latency da conexção a um servidor random.\\ 
+\hspace{5mm}\textbf{Argumentos}: \textit{None}.\\
+\textbf{Retorna}: objeto \textit{SpeedTestResult} com as informações relativas aos resultados do teste.
+
+\subsection{report}
+\hspace{5mm}Este método vai gerar um \textit{test\_report} basiado numa lista de objetos \textit{SpeedTestResult} passados como argumentos.\\ 
+\textbf{Argumentos}:
+\begin{enumerate}
+\item List[objeto \textit{SpeedTestResult}];
+\item \textit{report\_name} (str) - nome do ficheiro a ser gerado.
+\end{enumerate}
+\textbf{Retorna}: \textit{None}. O ficheiro \textit{test\_report} será gerado
+
+\subsection{run\_tests}
+\hspace{5mm}Este método serve para calcular a largura de banda e latency da conexção a um \textit{num} de servidores num país ou a um server com o id passado por argumento.\\
+Nota: se o terceiro argumento for um id a função realizará \textit{num} testes a esses servidor, se for um país fará \textit{num} testes usando a função \autoref{subsec.countrytest}, ou seja, a random servidores do país introduzido.\\
+\hspace{5mm}\textbf{Argumentos}: 
+\begin{enumerate}
+\item \textit{inteval}: intervalo de tempo entre cada teste realizado;
+\item \textit{num}: número de testes a realizar;
+\item \textit{id\_or\_country}: país (str) ou id (int) de um server;
+\end{enumerate}
+\textbf{Retorna}: objeto \textit{SpeedTestResult} com as informações relativas aos resultados do teste.
 
 \chapter{Resultados}
 \label{chap:resultados}
