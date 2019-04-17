@@ -122,11 +122,15 @@ A aplicação foi desenvolvida em python3 no âmbito da disciplina de Laboratór
 \section{Labi\_02}
 \hspace{5mm}Esta é a aplicação que foi desenvolvida e que pode ser utilizada diretamente de acordo com o usage demonstrado ao correr a aplicação sem argumentos. Toda a descrição feita neste relatório remete na mesma para a documentação, esta criada a quando do desenvolvimento da aplicação.
 
+\subsection{main}
+Este método é utilizado quando a app é chamada como classe principal (\textit{main}).
+Inicialmente chama o método validate (\autoref{subsec.validate}), seguido de run\_tests (\autoref{subsec.runt}), depois o report \autoref{subsec.report} com o resultado da anterior e finalmente assina esse relatório com o método create\_signed\_document (\autoref{subsec.signDoc}).
+
 \subsection{calc\_download()}
-\hspace{5mm}Cálculo da largura de banda.\\
+Cálculo da largura de banda.\\
 Este método pede, inicialmente, para fazer um download de 100 megabytes ao target server dentro de 10 segundos. Depois verifica que não há mais data para ser recebida do \textit{target\_server} e finalmente calcula o time download 1mb que a máquina demora a fazer download de 1 megabyte.\\ 
-\hspace{5mm}\textbf{Argumentos}: \textit{target\_server}(dicionário com informação sobre o target server). 
-\hspace{5mm}\textbf{Retorna}: (float) $1/\textit{time\_download\_1mb}$
+\textbf{Argumentos}: \textit{target\_server}(dicionário com informação sobre o target server). 
+\textbf{Retorna}: (float) $1/\textit{time\_download\_1mb}$
 
 \subsection{calc\_latency()}
 \hspace{5mm}Cálculo da latência.\\ 
@@ -141,6 +145,7 @@ Este método tenta trocar dez comandos PING-PONG com o targe-server e calcula o 
 \textbf{Retorna}: objeto \textit{SpeedTestResult} com as informações relativas aos resultados do teste.
 
 \subsection{create\_signed\_document}
+\label{subsec.signDoc}
 \hspace{5mm}Este método gera um \textit{signature file} assinando o \textit{report} com a chave privada no \textit{key\_path} especificado.\\ 
 \hspace{5mm}\textbf{Argumentos}: 
 \begin{enumerate}
@@ -156,12 +161,14 @@ Este método tenta trocar dez comandos PING-PONG com o targe-server e calcula o 
 \textbf{Retorna}: objeto \textit{SpeedTestResult} com as informações relativas aos resultados do teste.
 
 \subsection{random\_test()}
-\hspace{5mm}Este método serve para calcular a largura de banda e latency da conexção a um servidor random.\\ 
-\hspace{5mm}\textbf{Argumentos}: \textit{None}.\\
+\label{subsec.randt}
+Este método serve para calcular a largura de banda e latency da conexção a um servidor random.\\ 
+\textbf{Argumentos}: \textit{None}.\\
 \textbf{Retorna}: objeto \textit{SpeedTestResult} com as informações relativas aos resultados do teste.
 
 \subsection{report()}
-\hspace{5mm}Este método vai gerar um \textit{test\_report} basiado numa lista de objetos \textit{SpeedTestResult} passados como argumentos.\\ 
+\label{subsec.report}
+Este método vai gerar um \textit{test\_report} basiado numa lista de objetos \textit{SpeedTestResult} passados como argumentos.\\ 
 \textbf{Argumentos}:
 \begin{enumerate}
 \item List[objeto \textit{SpeedTestResult}];
@@ -170,9 +177,10 @@ Este método tenta trocar dez comandos PING-PONG com o targe-server e calcula o 
 \textbf{Retorna}: \textit{None}. O ficheiro \textit{test\_report} será gerado
 
 \subsection{run\_tests()}
-\hspace{5mm}Este método serve para calcular a largura de banda e latency da conexção a um \textit{num} de servidores num país ou a um server com o id passado por argumento.\\
-Nota: se o terceiro argumento for um id a função realizará \textit{num} testes a esses servidor, se for um país fará \textit{num} testes usando a função \autoref{subsec.countrytest}, ou seja, a random servidores do país introduzido.\\
-\hspace{5mm}\textbf{Argumentos}: 
+\label{subsec.runt}
+Este método serve para calcular a largura de banda e latency da conexção a um \textit{num} de servidores num país ou a um server com o id passado por argumento.\\
+Nota: se o terceiro argumento for um id a função realizará \textit{num} testes a esses servidor, se for um país fará \textit{num} testes usando a função \autoref{subsec.countrytest} e se não foi passado terceiro argumento realiza um teste random (\autoref{subsec.randt}).\\
+\textbf{Argumentos}: 
 \begin{enumerate}
 \item \textit{inteval}: intervalo de tempo entre cada teste realizado;
 \item \textit{num}: número de testes a realizar;
@@ -181,6 +189,7 @@ Nota: se o terceiro argumento for um id a função realizará \textit{num} teste
 \textbf{Retorna}: objeto \textit{SpeedTestResult} com as informações relativas aos resultados do teste.
 
 \subsection{validate()}
+\label{subsec.validate}
 Este método trata da validação dos argumentos passados pela variávle sys.argv.\\ 
 \textbf{Argumentos}: \textit{None}.\\
 \textbf{Retorna}: \textit{None}.

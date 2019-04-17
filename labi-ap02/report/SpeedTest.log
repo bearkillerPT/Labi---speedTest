@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.13)  17 APR 2019 14:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.13)  17 APR 2019 15:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1046,7 +1046,7 @@ LaTeX Info: Redefining \nameref on input line 20.
 \@outlinefile=\write5
 \openout5 = `SpeedTest.out'.
 
-<ua.pdf, id=95, 52.195pt x 55.20625pt>
+<ua.pdf, id=99, 52.195pt x 55.20625pt>
 File: ua.pdf Graphic file (type pdf)
 <use ua.pdf>
 Package pdftex.def Info: ua.pdf  used on input line 50.
@@ -1141,111 +1141,104 @@ Package babel Info: Redefining portuges shorthand "|
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 125.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 131.
+(babel)             in language  on input line 129.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 137.
+(babel)             in language  on input line 135.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 143.
+(babel)             in language  on input line 141.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 143.
+(babel)             in language  on input line 141.
 [3
 
 ]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 143.
+(babel)             in language  on input line 141.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 153.
+(babel)             in language  on input line 147.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 158.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 163.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 172.
+(babel)             in language  on input line 169.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 176.
+(babel)             in language  on input line 179.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 176.
+(babel)             in language  on input line 179.
  [4]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 183.
+(babel)             in language  on input line 179.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 188.
+(babel)             in language  on input line 191.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 193.
+(babel)             in language  on input line 197.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 203.
+(babel)             in language  on input line 202.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 209.
+(babel)             in language  on input line 212.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 214.
+(babel)             in language  on input line 217.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 214.
+(babel)             in language  on input line 217.
  [5]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 215.
+(babel)             in language  on input line 218.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 221.
+(babel)             in language  on input line 224.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 231.
+(babel)             in language  on input line 230.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 231.
+(babel)             in language  on input line 240.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 240.
  [6]
 Cap\'{\i }tulo 4.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 231.
+(babel)             in language  on input line 240.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 233.
+(babel)             in language  on input line 242.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 233.
+(babel)             in language  on input line 242.
 [7
 
 ]
 Cap\'{\i }tulo 5.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 233.
+(babel)             in language  on input line 242.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 235.
+(babel)             in language  on input line 244.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 235.
+(babel)             in language  on input line 244.
 [8
 
 ]
 Cap\'{\i }tulo 6.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 235.
-Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 244.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 244.
+(babel)             in language  on input line 253.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 253.
 [9
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 244.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 244.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 253.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 253.
  (./SpeedTest.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 244.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 244.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 253.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 253.
+Package rerunfilecheck Info: File `SpeedTest.out' has not changed.
+(rerunfilecheck)             Checksum: 97C4A9A0EB15F570C65893CDBAA48C8D;1469.
 
-
-Package rerunfilecheck Warning: File `SpeedTest.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `SpeedTest.out':
-(rerunfilecheck)             Before: C0C5950D20B53A486DCFDB3B40A1D736;1354
-(rerunfilecheck)             After:  B35B5453BA3F3DBA9A62480DF7999D71;1410.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 27219 strings out of 494862
- 648216 string characters out of 6178945
- 827421 words of memory out of 5000000
- 30057 multiletter control sequences out of 15000+600000
+ 27231 strings out of 494862
+ 648402 string characters out of 6178945
+ 827661 words of memory out of 5000000
+ 30068 multiletter control sequences out of 15000+600000
  15548 words of font info for 35 fonts, out of 8000000 for 9000
  38 hyphenation exceptions out of 8191
  75i,6n,128p,908b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1262,10 +1255,10 @@ e/gil/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk> </home
 gil/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm2488.600pk></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on SpeedTest.pdf (13 pages, 127189 bytes).
+Output written on SpeedTest.pdf (13 pages, 128041 bytes).
 PDF statistics:
- 566 PDF objects out of 1000 (max. 8388607)
- 246 compressed objects within 3 object streams
- 51 named destinations out of 1000 (max. 500000)
- 194 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 577 PDF objects out of 1000 (max. 8388607)
+ 257 compressed objects within 3 object streams
+ 52 named destinations out of 1000 (max. 500000)
+ 202 words of extra memory for PDF output out of 10000 (max. 10000000)
 
