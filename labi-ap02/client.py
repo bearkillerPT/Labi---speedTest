@@ -32,7 +32,7 @@ def log_error(message):
 
 
 def log_warning(message):
-    log(message, 'red')
+    log(message, 'yellow')
 
 
 def log_verbose(message):
@@ -252,7 +252,6 @@ def create_signed_document(key_path: str, report_name: str, signature_name: str)
 
     with open(key_path, 'r') as key_file:
         key = RSA.importKey(key_file.read())
-
     with open(report_name, 'r') as rep:
         report_string = rep.read()
 
