@@ -269,6 +269,7 @@ def create_signed_document(key_path: str, report_name: str, signature_name: str)
 
 def main():
     """Main function that will be executed, if and only if, the current file is the main module"""
+    load_server()
     validate()
     testes = run_tests(interval, num, id_or_country)
     report(testes, "report.csv")
