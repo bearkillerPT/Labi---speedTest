@@ -1,6 +1,5 @@
 
 \documentclass{report}
-\usepackage{pgfplots}
 \usepackage[T1]{fontenc} % Fontes T1
 \usepackage[utf8]{inputenc} % Input UTF8
 \usepackage[nottoc]{tocbibind}
@@ -12,11 +11,7 @@
 \usepackage{graphicx}
 
 
-\pgfplotsset{
-  compat=newest,
-  xlabel near ticks,
-  ylabel near ticks
-}
+
 \begin{document}
 %%
 % Definições
@@ -119,7 +114,8 @@ A aplicação foi desenvolvida em python3 no âmbito da disciplina de Laboratór
 
 \chapter{Aplicação de Speed Test}
 \label{chap.Aplicação de Speed Test}
-\section{Labi\_02}
+\section{client.py}
+\label{sec.client}
 \hspace{5mm}Esta é a aplicação que foi desenvolvida e que pode ser utilizada diretamente de acordo com o usage demonstrado ao correr a aplicação sem argumentos. Toda a descrição feita neste relatório remete na mesma para a documentação, esta criada a quando do desenvolvimento da aplicação.
 
 \subsection{main}
@@ -127,12 +123,14 @@ Este método é utilizado quando a app é chamada como classe principal (\textit
 Inicialmente chama o método validate (\autoref{subsec.validate}), seguido de run\_tests (\autoref{subsec.runt}), depois o report \autoref{subsec.report} com o resultado da anterior e finalmente assina esse relatório com o método create\_signed\_document (\autoref{subsec.signDoc}).
 
 \subsection{calc\_download()}
+\label{subsec.download}
 Cálculo da largura de banda.\\
 Este método pede, inicialmente, para fazer um download de 100 megabytes ao target server dentro de 10 segundos. Depois verifica que não há mais data para ser recebida do \textit{target\_server} e finalmente calcula o time download 1mb que a máquina demora a fazer download de 1 megabyte.\\ 
 \textbf{Argumentos}: \textit{target\_server}(dicionário com informação sobre o target server). 
 \textbf{Retorna}: (float) $1/\textit{time\_download\_1mb}$
 
 \subsection{calc\_latency()}
+\label{subsec.latency}
 \hspace{5mm}Cálculo da latência.\\ 
 Este método tenta trocar dez comandos PING-PONG com o targe-server e calcula o tempo médio em milisegundos entre estas trocas.\\
 \hspace{5mm}\textbf{Argumentos}: target server (dicionário com informação sobre o target server). 
@@ -156,6 +154,7 @@ Este método tenta trocar dez comandos PING-PONG com o targe-server e calcula o 
 \textbf{Retorna}: \textit{None}.
 
 \subsection{id\_test()}
+\label{subsec.idtest}
 \hspace{5mm}Este método serve para calcular a largura de banda e latency da conexão a um servidor com o id passado como argumento.\\ 
 \hspace{5mm}\textbf{Argumentos}: (int) \textit{target\_id}.\\
 \textbf{Retorna}: objeto \textit{SpeedTestResult} com as informações relativas aos resultados do teste.
@@ -185,6 +184,7 @@ Nota: se o terceiro argumento for um id a função realizará \textit{num} teste
 \item \textit{inteval}: intervalo de tempo entre cada teste realizado;
 \item \textit{num}: número de testes a realizar;
 \item \textit{id\_or\_country}: país (str) ou id (int) de um server;
+\item \textit{option}: -v se pretender correr a aplicação em modo \textit{verbose}.
 \end{enumerate}
 \textbf{Retorna}: objeto \textit{SpeedTestResult} com as informações relativas aos resultados do teste.
 
@@ -195,7 +195,8 @@ Este método trata da validação dos argumentos passados pela variávle sys.arg
 \textbf{Retorna}: \textit{None}.
 
 \subsection{usage()}
-Este método imprime a mensagem de erro passada como argumento e imprime a ajuda para utilização da aplicação.\\ 
+\label{subsec.usage}
+Este método imprime a mensagem de erro passada como argumento e imprime a ajuda para utilização da aplicação. No campo \textit{option} pode usar \textit{-v} para entrar em modo verbose.\\ 
 \textbf{Argumentos}: \textit{message} (str).\\
 \textbf{Retorna}: \textit{None}.
 
@@ -228,21 +229,72 @@ Este método chama \autoref{subsec:log} com a mensagem igual à passada como arg
 \textbf{Retorna}: \textit{None}.
 
 \subsection{load\_server()}
-Este método lê o ficheiro \textit{"servers.json"} e cria um dicionário global com a lista de servidores.
+Este método lê o ficheiro \textit{"servers.json"} e cria um dicionário global com a lista de servidores.\\
 \textbf{Argumentos}:
 \textit{None}.\\
 \textbf{Retorna}: \textit{None}.
 
+\section{test\_client}
+Este programa é constituida por métodos que são testes unitários aos da aplicação principal (\autoref{sec.client}). Lista \{\textit{teste unitário : método (da \autoref{sec.client})}\}:
+\begin{enumerate}
+\item test\_calc\_download() : \autoref{subsec.download};
+\item test\_calc\_latency(): \autoref{subsec.latency};
+\item test\_country\_test(): \autoref{subsec.countrytest};
+\item test\_create\_signed\_document(): \autoref{subsec.signDoc};
+\item test\_id\_test(): \autoref{subsec.idtest};
+\item test\_random\_test(): \autoref{subsec.randt};
+\item test\_report(): \autoref{subsec.report};
+\item test\_run\_test(): \autoref{subsec.runt}.
+\end{enumerate}
+
+\section{speed\_test\_result}
+Este programa serve para criar objetos SpeedTestResult que têm, cada um, as informações respetivas a um teste. Tem apenas um construtor e um método:
+\subsection{Construtor}
+O construtor da classe cria um objeto com os parametros passados como argumentos:
+\textbf{Argumentos}:
+\begin{enumerate}
+\item \textit{server\_id} (int);
+\item \textit{download\_speed} (float);
+\item \textit{latency} (int);
+\end{enumerate}
+
+\subsection{getObjDict}
+Este método devolve um dicionário com os resultados do teste relativo ao objeto.
+\textbf{Argumentos}: \textit{None}.\\
+\textbf{Retorna}: \textit{testResult} (dict).
+
+\chapter{Exemplo de utilização}
+\label{chap:example}
+Com exemplo ir-se-á correr a aplicação \autoref{sec.client} com os argumentos:
+\begin{enumerate}
+\item \textit{interval} = 5 (segundos);
+\item \textit{num} = 3 (testes);
+\item \textit{id\_or\_country} = Portugal;
+\item \textit{option} = -v (\textit{verbose}).
+\end{enumerate}
+Ao correr a aplicação com estes argumentos, segundo a \autoref{subsec.usage}, vêm os seguintes resultados:\\
+\includegraphics[width=\textwidth]{useExample}
+Criando-se dois novos ficheiros na pasta onde está a aplicação:
+\begin{itemize}
+\item report.sig, contendo uma assinatura do relatório pela chave privada fornecida (\textit{key.priv}).
+\item report.csv, um ficheiro \ac{csv} com os resultados dos três testes efetuados:
+\end{itemize}
+\includegraphics[width=\textwidth]{reportcsv}
 
 
-
-
-\chapter{Resultados}
-\label{chap:resultados}
 \chapter{Análise}
 \label{chap:analise}
 \chapter{Conclusão}
 \label{chap:conclusao}
+\chapter*{Acrónimos}
+\begin{acronym}
+\acro{ua}[UA]{Universidade de Aveiro}
+\acro{miect}[MIECT]{Mestrado Integrado em Engenharia de Computadores e Telemática}
+\acro{guiaomini}[Mini-projeto]{Universidade de Aveiro
+		Dep. de Electrónica, Telecomunicações e Informática
+		Laboratório de Sistemas Digitais}
+\acro{csv}[CSV]{Comma-separated values}
+\end{acronym}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
