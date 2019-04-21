@@ -87,7 +87,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%% RESUMO %%%%%%
 \begin{abstract}
-Este relatório serve para descrever uma ferramenta desenvolvida para calcular a largura de banda e a latência da máquina onde a aplicação se encontra a correr. Calculam-se estest valores para um determinado servidor ou para um conjunto, de cardinalidade especificável, de servidores de um país, também especificável. No final a aplicação cria um relatõrio, em csv, e assina-o com a chave privada fornecida por um ficheiro à parte pelo utilizador.
+Este relatório pretende descrever uma aplicação desenvolvida para calcular a largura de banda e a latência da máquina onde a aplicação se encontra a correr. Calculam-se estes valores para um determinado servidor ou para um conjunto, de cardinalidade especificável, de servidores de um país tambem este especificável. No final a aplicação cria um relatõrio, (\textit{report.csv}) , em csv, e assina-o com uma chave privada, (\textit{key.priv}), a ser fornecida pelo utilizador.
 
 \end{abstract}
 
@@ -95,19 +95,18 @@ Este relatório serve para descrever uma ferramenta desenvolvida para calcular a
 \chapter{Introdução}
 \label{chap.introducao}
 
-A aplicação foi desenvolvida em python3 no âmbito da disciplina de Laboratórios de Informática, no ano letivo 2018/2019. A adicionar às especificações básicas pedidas, segundo o guião sobre regras do segundo trabalho de aprofundamento, construi-se ainda suporte para pydocs para haver uma explicação mais detalhada sobre cada método e classe no nosso projeto. O programa foi escrito com base em test driven development  (\autoref{chap.metodologia}) e, como tal, os testes unitários e funcionais foram criados primeiro, seguidos por um esqueleto do programa e finalmente por vários updates a ambos ({chap.resultados}) para chegar ao estado em que a aplicação se encontra de momento (\autoref{chap.analise}). Finalmente são tiradas as conclusões sobre os aspetos positivos e, potencialmente, negativos desta solução em concreto (\autoref{chap.conclusao})
+A aplicação foi desenvolvida em python3 no âmbito da disciplina de Laboratórios de Informática, no ano letivo 2018/2019. A adicionar às especificações básicas pedidas, segundo o guião sobre regras do segundo trabalho de aprofundamento, construiu-se ainda suporte para pydocs, para haja uma explicação mais detalhada de cada classe e método do nosso projeto. O programa foi escrito com base em test driven development  (\autoref{chap.metodologia}) e, como tal, os testes unitários e funcionais foram criados primeiro, seguidos por um esboço do programa que se pretendia e finalmente, por vários updates a ambos até chegar ao estado em que a aplicação se encontra agora. Finalmente é demonstrado em detalhe um exemplo de utilização da aplicação (\autoref{chap.Aplicação de Speed Test}).
 
 
 \chapter{Metodologia}
 \label{chap.metodologia}
 
 \begin{enumerate}
-	\item Criar o esqueleto do programa que é agora o inicializador da classe (labi02) se esta for chamada diretamente;
-	\item Criar o ficheiro test\_labi\_02 como um teste que, apenas se a construção da aplicação for robusta e exatamente como especificada, passa.
-	\item Criar o programa labi\_02 e definir as funções com os argumentos de entrada e cada uma com uma descrição detalhada, disponivel nos pydocs, dos aspetos funcionais de cada função.
-	\item Ajustar os métodos de forma a que a aplicação passa todos os testes impostos no teste criado.
-	\item Testar o programa manualmente e/ou com testes funcionais.
-	\item Corrigir eventuais erros.
+	\item Criar o primeiro teste (\textit{test\_client}) de forma a que, a cada método que é construido, se possa testar imediatamente se esse método cumpre exatamente com o que estava especificado;
+	\item Criar o esqueleto da aplicação;
+	\item Criar o pydoc para a aplicação e para os testes;
+	\item Ajustar os métodos de forma a que a que passem a todos testes;
+	\item Testar o programa manualmente e com testes funcionais;
 	\item Iterar o processo de debugging e correção de erros.
 \end{enumerate}
 
@@ -116,36 +115,42 @@ A aplicação foi desenvolvida em python3 no âmbito da disciplina de Laboratór
 \label{chap.Aplicação de Speed Test}
 \section{client.py}
 \label{sec.client}
-\hspace{5mm}Esta é a aplicação que foi desenvolvida e que pode ser utilizada diretamente de acordo com o usage demonstrado ao correr a aplicação sem argumentos. Toda a descrição feita neste relatório remete na mesma para a documentação, esta criada a quando do desenvolvimento da aplicação.
+A forma de utilizar este programa está descrita em detalhe na \autoref{subsec.usage}. Toda a descrição feita neste relatório remete na mesma para a documentação criada a quando do desenvolvimento da aplicação, em pydoc.
 
 \subsection{main}
-Este método é utilizado quando a app é chamada como classe principal (\textit{main}).
-Inicialmente chama o método validate (\autoref{subsec.validate}), seguido de run\_tests (\autoref{subsec.runt}), depois o report \autoref{subsec.report} com o resultado da anterior e finalmente assina esse relatório com o método create\_signed\_document (\autoref{subsec.signDoc}).
+Ao correr a aplicação a ordem pela qual os métodos são chamados é a seguinte:
+\begin{enumerate}
+\item \nameref{subsec:loadserver} - \autoref{subsec:loadserver};
+\item \nameref{subsec.validate} - \autoref{subsec.validate};
+\item \nameref{subsec.runt} - \autoref{subsec.runt};
+\item \nameref{subsec.report} - \autoref{subsec.report};
+\item \nameref{subsec.signDoc} - \autoref{subsec.signDoc}.
+\end{enumerate}
 
 \subsection{calc\_download()}
 \label{subsec.download}
-Cálculo da largura de banda.\\
-Este método pede, inicialmente, para fazer um download de 100 megabytes ao target server dentro de 10 segundos. Depois verifica que não há mais data para ser recebida do \textit{target\_server} e finalmente calcula o time download 1mb que a máquina demora a fazer download de 1 megabyte.\\ 
+Cálculo de largura de banda.\\
+Este método pede ao \textit{target\_server} um download de 100 mb. Durante 10 segundos é feito download dos dados enviados pelo mesmo. No final dos 10 segundos, se o download tiver sido superior a 10mb prossegue, caso contrário, discarta este servidor.\\
 \textbf{Argumentos}: \textit{target\_server}(dicionário com informação sobre o target server). 
 \textbf{Retorna}: (float) $1/\textit{time\_download\_1mb}$
 
 \subsection{calc\_latency()}
 \label{subsec.latency}
-\hspace{5mm}Cálculo da latência.\\ 
-Este método tenta trocar dez comandos PING-PONG com o targe-server e calcula o tempo médio em milisegundos entre estas trocas.\\
-\hspace{5mm}\textbf{Argumentos}: target server (dicionário com informação sobre o target server). 
-\hspace{5mm}\textbf{Retorna}:(int) \textit{average\_trade\_time} em ms.
+Cálculo da latência.\\ 
+Este método trocaa dez \textit{PING-PONG} com o \textit{targe-server} e calcula o tempo médio em milisegundos entre estas trocas.\\
+\textbf{Argumentos}: target server (dicionário com informação sobre o target server). 
+\textbf{Retorna}:(int) \textit{average\_trade\_time} em ms.
 
 \subsection{country\_test()}
 \label{subsec.countrytest}
-\hspace{5mm}Este método serve para calcular a largura de banda e latency da conexção a um servidor random do país passado como argumento.\\ 
-\hspace{5mm}\textbf{Argumentos}: (str) \textit{target\_country}.\\
+Este método serve para calcular a largura de banda e latency da conexão a um servidor random do país passado como argumento.\\ 
+\textbf{Argumentos}: (str) \textit{target\_country}.\\
 \textbf{Retorna}: objeto \textit{SpeedTestResult} com as informações relativas aos resultados do teste.
 
 \subsection{create\_signed\_document}
 \label{subsec.signDoc}
-\hspace{5mm}Este método gera um \textit{signature file} assinando o \textit{report} com a chave privada no \textit{key\_path} especificado.\\ 
-\hspace{5mm}\textbf{Argumentos}: 
+Este método gera um \textit{signature file} assinando o \textit{report} com a chave privada no \textit{key\_path} especificado.\\ 
+\textbf{Argumentos}: 
 \begin{enumerate}
 \item \textit{key\_path} (str): The path to the file that contains the key;
 \item \textit{report\_name} (str): Nome do \textit{report} a ser assinado;
@@ -155,13 +160,13 @@ Este método tenta trocar dez comandos PING-PONG com o targe-server e calcula o 
 
 \subsection{id\_test()}
 \label{subsec.idtest}
-\hspace{5mm}Este método serve para calcular a largura de banda e latency da conexão a um servidor com o id passado como argumento.\\ 
-\hspace{5mm}\textbf{Argumentos}: (int) \textit{target\_id}.\\
+Este método serve para calcular a largura de banda e latency da conexão a um servidor com o id passado como argumento.\\ 
+\textbf{Argumentos}: (int) \textit{target\_id}.\\
 \textbf{Retorna}: objeto \textit{SpeedTestResult} com as informações relativas aos resultados do teste.
 
 \subsection{random\_test()}
 \label{subsec.randt}
-Este método serve para calcular a largura de banda e latency da conexção a um servidor random.\\ 
+Este método serve para calcular a largura de banda e latency da conexão a um servidor random.\\ 
 \textbf{Argumentos}: \textit{None}.\\
 \textbf{Retorna}: objeto \textit{SpeedTestResult} com as informações relativas aos resultados do teste.
 
@@ -177,8 +182,8 @@ Este método vai gerar um \textit{test\_report} basiado numa lista de objetos \t
 
 \subsection{run\_tests()}
 \label{subsec.runt}
-Este método serve para calcular a largura de banda e latency da conexção a um \textit{num} de servidores num país ou a um server com o id passado por argumento.\\
-Nota: se o terceiro argumento for um id a função realizará \textit{num} testes a esses servidor, se for um país fará \textit{num} testes usando a função \autoref{subsec.countrytest} e se não foi passado terceiro argumento realiza um teste random (\autoref{subsec.randt}).\\
+Este método serve para calcular a largura de banda e latency da coneção a um \textit{num} de servidores num país, ou a um server com o id passado por argumento.\\
+Nota: se o terceiro argumento for um id, a função realizará \textit{num} testes a esses servidor, se for um país, fará \textit{num} testes usando a função \autoref{subsec.countrytest} e se não foi passado terceiro argumento realiza um teste random (\autoref{subsec.randt}).\\
 \textbf{Argumentos}: 
 \begin{enumerate}
 \item \textit{inteval}: intervalo de tempo entre cada teste realizado;
@@ -229,6 +234,7 @@ Este método chama \autoref{subsec:log} com a mensagem igual à passada como arg
 \textbf{Retorna}: \textit{None}.
 
 \subsection{load\_server()}
+\label{subsec:loadserver}
 Este método lê o ficheiro \textit{"servers.json"} e cria um dicionário global com a lista de servidores.\\
 \textbf{Argumentos}:
 \textit{None}.\\
@@ -262,9 +268,10 @@ O construtor da classe cria um objeto com os parametros passados como argumentos
 Este método devolve um dicionário com os resultados do teste relativo ao objeto.
 \textbf{Argumentos}: \textit{None}.\\
 \textbf{Retorna}: \textit{testResult} (dict).
-
-\chapter{Exemplo de utilização}
-\label{chap:example}
+\chapter{Análise de um exemplo e Conclusão}
+\label{chap:analiseconclusao}
+\section{Exemplo de utilização}
+\label{sec:example}
 Com exemplo ir-se-á correr a aplicação \autoref{sec.client} com os argumentos:
 \begin{enumerate}
 \item \textit{interval} = 5 (segundos);
@@ -272,6 +279,8 @@ Com exemplo ir-se-á correr a aplicação \autoref{sec.client} com os argumentos
 \item \textit{id\_or\_country} = Portugal;
 \item \textit{option} = -v (\textit{verbose}).
 \end{enumerate}
+
+
 Ao correr a aplicação com estes argumentos, segundo a \autoref{subsec.usage}, vêm os seguintes resultados:\\
 \includegraphics[width=\textwidth]{useExample}
 Criando-se dois novos ficheiros na pasta onde está a aplicação:
@@ -282,10 +291,7 @@ Criando-se dois novos ficheiros na pasta onde está a aplicação:
 \includegraphics[width=\textwidth]{reportcsv}
 
 
-\chapter{Análise}
-\label{chap:analise}
-\chapter{Conclusão}
-\label{chap:conclusao}
+
 \chapter*{Acrónimos}
 \begin{acronym}
 \acro{ua}[UA]{Universidade de Aveiro}
