@@ -1,46 +1,5 @@
-This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
-Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
-The top-level auxiliary file: Diabetes.aux
-The style file: plain.bst
-Database file #1: bibliografia.bib
-You've used 7 entries,
-            2118 wiz_defined-function locations,
-            526 strings with 4426 characters,
-and the built_in function-call counts, 1472 in all, are:
-= -- 133
-> -- 49
-< -- 0
-+ -- 22
-- -- 14
-* -- 52
-:= -- 247
-add.period$ -- 21
-call.type$ -- 7
-change.case$ -- 28
-chr.to.int$ -- 0
-cite$ -- 7
-duplicate$ -- 49
-empty$ -- 155
-format.name$ -- 14
-if$ -- 316
-int.to.chr$ -- 0
-int.to.str$ -- 7
-missing$ -- 0
-newline$ -- 38
-num.names$ -- 14
-pop$ -- 63
-preamble$ -- 1
-purify$ -- 21
-quote$ -- 0
-skip$ -- 49
-stack$ -- 0
-substring$ -- 36
-swap$ -- 7
-text.length$ -- 0
-text.prefix$ -- 0
-top$ -- 0
-type$ -- 28
-warning$ -- 0
-while$ -- 14
-width$ -- 8
-write$ -- 72
+[0] Config.pm:302> INFO - This is Biber 2.9
+[0] Config.pm:305> INFO - Logfile is 'SpeedTest.blg'
+[26] biber:313> INFO - === ter abr 23, 2019, 22:54:56
+[53] Utils.pm:185> ERROR - Cannot find control file 'SpeedTest.bcf'! - did you pass the "backend=biber" option to BibLaTeX?
+[53] Biber.pm:114> INFO - ERRORS: 1
