@@ -75,10 +75,10 @@
 
 
 
-\tableofcontents
-%\listoftables 
-%\listoffigures  
 
+\tableofcontents
+\listoftables 
+\listoffigures  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
@@ -283,13 +283,17 @@ Com exemplo ir-se-á correr a aplicação \autoref{sec.client} com os argumentos
 
 
 Ao correr a aplicação com estes argumentos, segundo a \autoref{subsec.usage}, vêm os seguintes resultados:\\
-\includegraphics[width=\textwidth]{useExample}
+\begin{figure}
+	\includegraphics[width=\textwidth]{useExample}
+	\caption{Figura 1}
+\end{figure}
 Criando-se dois novos ficheiros na pasta onde está a aplicação:
 \begin{itemize}
 \item report.sig, contendo uma assinatura do relatório pela chave privada fornecida (\textit{key.priv}).
 \item report.csv, um ficheiro \ac{csv} com os resultados dos três testes efetuados:
 \end{itemize}
 \begin{table}[h]
+\caption{Tabela 1}
 \centering
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{llllll}

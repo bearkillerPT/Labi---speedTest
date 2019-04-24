@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.13)  23 APR 2019 23:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.13)  24 APR 2019 11:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -648,7 +648,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-<ua.pdf, id=116, 52.195pt x 55.20625pt>
+<ua.pdf, id=124, 52.195pt x 55.20625pt>
 File: ua.pdf Graphic file (type pdf)
 <use ua.pdf>
 Package pdftex.def Info: ua.pdf  used on input line 45.
@@ -678,18 +678,45 @@ been already used, duplicate ignored
 l.71 
       [1] (./SpeedTest.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 5.
+(Font)              <7> on input line 7.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 5.
+(Font)              <5> on input line 7.
 )
 \tf@toc=\write5
 \openout5 = `SpeedTest.toc'.
 
 Package babel Info: Redefining portuges shorthand "|
+(babel)             in language append on input line 80.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language append on input line 80.
+ [1
+
+]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language append on input line 80.
+ (./SpeedTest.lot)
+\tf@lot=\write6
+\openout6 = `SpeedTest.lot'.
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language append on input line 81.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language append on input line 81.
+ [2
+
+]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language append on input line 81.
+ (./SpeedTest.lof)
+\tf@lof=\write7
+\openout7 = `SpeedTest.lof'.
+
+Package babel Info: Redefining portuges shorthand "|
 (babel)             in language append on input line 84.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language append on input line 84.
- [1
+
+[3
 
 ]
 Package babel Info: Redefining portuges shorthand "|
@@ -806,59 +833,59 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language append on input line 272.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language append on input line 274.
-<useExample.png, id=271, 754.82pt x 378.41376pt>
+<useExample.png, id=294, 754.82pt x 378.41376pt>
 File: useExample.png Graphic file (type png)
 <use useExample.png>
-Package pdftex.def Info: useExample.png  used on input line 286.
+Package pdftex.def Info: useExample.png  used on input line 287.
 (pdftex.def)             Requested size: 345.0pt x 172.95802pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 289.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 292.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 289.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 292.
+Package acronym Info: Label `acro:csv' newly defined as it shall be overridden
+although it is yet undefined on input line 293.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language append on input line 290.
+(babel)             in language append on input line 308.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language append on input line 290.
+(babel)             in language append on input line 314.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language append on input line 314.
  [8
 
- <./useExample.png>]
-Package acronym Info: Label `acro:csv' newly defined as it shall be overridden
-although it is yet undefined on input line 290.
+]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language append on input line 304.
+(babel)             in language append on input line 316.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language append on input line 312.
+(babel)             in language append on input line 319.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language append on input line 315.
+(babel)             in language append on input line 319.
+ [9 <./useExample.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 335.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language append on input line 315.
-[9]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 331.
+(babel)             in language append on input line 335.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language append on input line 331.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language append on input line 331.
+(babel)             in language append on input line 335.
  [10
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 331.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 335.
  (./SpeedTest.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 331.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 331.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 335.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 335.
 Package rerunfilecheck Info: File `SpeedTest.out' has not changed.
-(rerunfilecheck)             Checksum: C776AA070D86B3CF20EA15CA52085CEF;1873.
+(rerunfilecheck)             Checksum: DDF09AFD11E91478AA85C858C88E82A6;1979.
  ) 
 Here is how much of TeX's memory you used:
- 7773 strings out of 494862
- 110609 string characters out of 6178945
- 221451 words of memory out of 5000000
- 10919 multiletter control sequences out of 15000+600000
+ 7789 strings out of 494862
+ 110775 string characters out of 6178945
+ 221502 words of memory out of 5000000
+ 10923 multiletter control sequences out of 15000+600000
  15548 words of font info for 35 fonts, out of 8000000 for 9000
  38 hyphenation exceptions out of 8191
- 28i,8n,32p,853b,493s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,8n,32p,853b,516s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/gil/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk
 > </home/gil/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk>
  </home/gil/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk> 
@@ -873,10 +900,10 @@ gil/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm2488.600pk></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on SpeedTest.pdf (14 pages, 203862 bytes).
+Output written on SpeedTest.pdf (16 pages, 206466 bytes).
 PDF statistics:
- 690 PDF objects out of 1000 (max. 8388607)
- 339 compressed objects within 4 object streams
- 83 named destinations out of 1000 (max. 500000)
- 235 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 718 PDF objects out of 1000 (max. 8388607)
+ 360 compressed objects within 4 object streams
+ 89 named destinations out of 1000 (max. 500000)
+ 251 words of extra memory for PDF output out of 10000 (max. 10000000)
 
