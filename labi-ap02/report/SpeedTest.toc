@@ -1,6 +1,6 @@
 \babel@toc {portuguese}{}
-\contentsline {chapter}{Lista de Tabelas}{ii}{chapter*.2}
-\contentsline {chapter}{Lista de Figuras}{iii}{chapter*.3}
+\contentsline {chapter}{Lista de Tabelas}{iii}{chapter*.2}
+\contentsline {chapter}{Lista de Figuras}{iv}{chapter*.3}
 \contentsline {chapter}{\numberline {1}Introdu\IeC {\c c}\IeC {\~a}o}{1}{chapter.1}
 \contentsline {chapter}{\numberline {2}Metodologia}{2}{chapter.2}
 \contentsline {chapter}{\numberline {3}Aplica\IeC {\c c}\IeC {\~a}o de Speed Test}{3}{chapter.3}
@@ -25,7 +25,7 @@
 \contentsline {section}{\numberline {3.3}speed\_test\_result}{7}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}Construtor}{7}{subsection.3.3.1}
 \contentsline {subsection}{\numberline {3.3.2}getObjDict}{7}{subsection.3.3.2}
-\contentsline {chapter}{\numberline {4}An\IeC {\'a}lise de um exemplo e Conclus\IeC {\~a}o}{8}{chapter.4}
+\contentsline {chapter}{\numberline {4}Resultado}{8}{chapter.4}
 \contentsline {section}{\numberline {4.1}Exemplo de utiliza\IeC {\c c}\IeC {\~a}o 1}{8}{section.4.1}
 \contentsline {section}{\numberline {4.2}Exemplo de utiliza\IeC {\c c}\IeC {\~a}o 2}{9}{section.4.2}
-\contentsline {section}{\numberline {4.3}Conclus\IeC {\~a}o}{9}{section.4.3}
+\contentsline {chapter}{\numberline {5}Conclus\IeC {\~a}o}{11}{chapter.5}
