@@ -9,9 +9,6 @@
 \usepackage[printonlyused]{acronym}
 \usepackage{hyperref} % para autoref
 \usepackage{graphicx}
-
-
-
 \begin{document}
 %%
 % Definições
@@ -21,7 +18,7 @@
 \def\data{9 de Abril de 2019}
 \def\autores{André Patacas, Gil Teixeira}
 \def\autorescontactos{(93357) andrepatacas@ua.pt, (88194) gilteixeira@ua.pt}
-\def\departamento{DETI}
+\def\departamento{Universidade de Abeiro, DETI}
 \def\logotipo{ua.pdf}
 %
 %%%%%% CAPA %%%%%%
@@ -282,8 +279,11 @@ Com exemplo ir-se-á correr a aplicação \autoref{sec.client} com os argumentos
 \end{enumerate}
 
 
-Ao correr a aplicação com estes argumentos, segundo a \autoref{subsec.usage}, vêm os seguintes resultados:\\
-\includegraphics[width=\textwidth]{useExample}
+Ao correr a aplicação com estes argumentos, segundo a \autoref{subsec.usage}, vêm os seguintes resultados\autoref{useExample1}:\\
+\begin{figure}[h]
+	\label{useExample1}
+\includegraphics[width=\textwidth]{useExample1}
+\end{figure}
 Criando-se dois novos ficheiros na pasta onde está a aplicação:
 \begin{itemize}
 \item report.sig, contendo uma assinatura do relatório pela chave privada fornecida (\textit{key.priv}).
@@ -306,8 +306,45 @@ Contador & Id Do Servidor & Data e Hora no Formato ISO & Latencia & Largura de B
 Com exemplo ir-se-á correr a aplicação \autoref{sec.client} com os argumentos:
 \begin{enumerate}
 \item \textit{interval} = 1 (segundo);
-\item \textit{num} = 20 (testes);.
+\item \textit{num} = 20 (testes);
 \end{enumerate}
+
+
+Ao correr a aplicação com estes argumentos, segundo a \autoref{subsec.usage}, vêm os seguintes resultados:\\
+\includegraphics[width=\textwidth]{useExample2}
+Criando-se dois novos ficheiros na pasta onde está a aplicação:
+\begin{itemize}
+\item report.sig, contendo uma assinatura do relatório pela chave privada fornecida (\textit{key.priv}).
+\item report.csv, um ficheiro \ac{csv} com os resultados dos vinte testes efetuados:
+\end{itemize}
+\begin{table}[h]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llllll}
+	Contador & Id Do Servidor & Data e Hora no Formato ISO & Latencia & Largura de Banda   & Check                                                            \\
+	1        & 3787           & 2019-04-23 23:15:11.814397 & 72       & 1.2450874408544983 & e3303529e750ab6fbf6e3657bc981911ef7db2f3df67ae11ab6a19d17ac3a1ed \\
+	2        & 6907           & 2019-04-23 23:15:25.371232 & 200      & 1.453856874134937  & 0dce75c41407aade02ac0552bcd5f5d3340e6849815cf0a4e4adc1aed55edd0c \\
+	3        & 12322          & 2019-04-23 23:15:40.323813 & 301      & 1.6721249958527682 & 602ea564434909e5b1471b22b51d0e8ce6311e2499ac0ecf6e0d51b8bd76aea7 \\
+	4        & 13606          & 2019-04-23 23:15:55.476764 & 300      & 0.3002715865565481 & 69e5586b72267a7629471b90506d27bc4e56b86572129603657bcef0c4beceed \\
+	5        & 21873          & 2019-04-23 23:16:10.429150 & 305      & 0.6919384792792023 & becdbf5a489547184f0ee5dee68f7a9c7ef3d7766c251b524935b5744aee817b \\
+	6        & 20978          & 2019-04-23 23:16:22.785171 & 96       & 1.8346690686226794 & 06727d7d25aba259931278f2d543a5fdad855d8f32c602eace5cea441c6bf4ac \\
+	7        & 10728          & 2019-04-23 23:16:38.828644 & 301      & 0.210595319242981  & 58fdd5509cbe10a36352cf9f47f0ff5ca29bf5f67d27732fb847686ee97dcf6b \\
+	8        & 3482           & 2019-04-23 23:16:51.987782 & 164      & 1.8180169922073217 & e0e9678472c4405a8a042c29dd20b71e5d8cfb6058dc353aca592f0c9efeb6c5 \\
+	9        & 7035           & 2019-04-23 23:17:05.421876 & 188      & 1.9264675928248938 & 37b6d7f555e0e856812fc3f524067dd37d642c4f234d7d3300be9ad296b3a9f7 \\
+	10       & 9566           & 2019-04-23 23:17:20.374519 & 298      & 1.8944690340216246 & 0ac63397a48e204307f91ffdd92b95eacb50d7910895f5d7eddc66ba5c544f0c \\
+	11       & 3555           & 2019-04-23 23:17:32.722854 & 94       & 2.0166120335557522 & abd80b26ec548bf56caab155544ca524bb516072db9d2cfea28f738354a7f67c \\
+	12       & 2845           & 2019-04-23 23:17:47.773268 & 324      & 1.8117547004538457 & f001cd88c662dde20635deae16c37504354ad263ac5b8ce04a08eb595f037d21 \\
+	13       & 10230          & 2019-04-23 23:17:59.925717 & 87       & 2.057615821157388  & 88a60195bd227a14ffb815da2d3d622465a86f983f277f1c45f3c28cf9ddf84b \\
+	14       & 1609           & 2019-04-23 23:18:13.560844 & 200      & 2.063724927825838  & de7f4db37eb5d6d15c4de242cf585c066c8710c33e46386d224a65602ad2bce9 \\
+	15       & 17427          & 2019-04-23 23:18:28.513233 & 299      & 1.1734104673200632 & f39c6fba23407b29e7d4df5ef0391d8d505b9455ae8ccf0c2482324285914c28 \\
+	16       & 19534          & 2019-04-23 23:18:42.161013 & 192      & 1.1744314579010149 & 76e3df9180d78aa4f50ebb7d30ccb105364ec910ac3ecf5de84d07e37c25db4f \\
+	17       & 10420          & 2019-04-23 23:18:54.102702 & 75       & 2.132581818908019  & 5c563bf487f06307a53d79d28b486b82afdc08d687cf34969e9e7edc61fded5b \\
+	18       & 19866          & 2019-04-23 23:19:08.813828 & 300      & 1.974450059487398  & e320d4a4da6fa85634760c6d7e0aa7b786d9c74b4ed5a27fb39dd18a979944ab \\
+	19       & 16635          & 2019-04-23 23:19:23.506009 & 305      & 1.8385825253261963 & 027bb4e49c96ca3abe104c74adb30f18a5c3c0a5d8c52c8d6c7a221259e9d1c7 \\
+	20       & 1369           & 2019-04-23 23:19:38.659193 & 301      & 0.3467424459681414 & 18b151603cc853562f6041b0c1a59d3acbc5c0eb0260bb86c90fac52ed3ef8f8	
+\end{tabular}%
+}
+\end{table}
 
 \section{Conclusão}
 A aplicação tem também bons mecanismos de \textit{handling} de exceções, de forma a que as várias exceções que possam surgir possam ser mostradas.\\
