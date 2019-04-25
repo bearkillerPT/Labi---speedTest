@@ -8,7 +8,11 @@
 \usepackage{blindtext} % Gerar texto automaticamentez	
 \usepackage[printonlyused]{acronym}
 \usepackage{hyperref} % para autoref
+%\usepackage[backend=biber, style=ieee]{biblatex}%
 \usepackage{graphicx}
+
+
+
 \begin{document}
 %%
 % Definições
@@ -109,12 +113,21 @@ A aplicação foi desenvolvida em python3 no âmbito da disciplina de Laboratór
 \label{chap.metodologia}
 
 \begin{enumerate}
-	\item Criar o esqueleto da aplicação;
+	\item Criar o esqueleto da aplicação;\\
+	Biliotecas usadas:
+	\begin{itemize}
+	\item \cite[\textit{Documentação sobre a classe socket em C}]{socketsc}
+	\item \cite[\textit{Documentação sobre a classe csv em Python 3}]{csvpython}
+	\item \cite[\textit{Documentação sobre a classe socket em Python 3}]{socketspython}
+	\item \cite[\textit{Documentação sobre a classe pycripto em Python3}]{pycripto}
+	\item \cite[\textit{Documentação sobre a classe JSON em Python 3}]{jsonpython}
+	\item \cite[\textit{Documentação sobre a classe time em Python 3}]{timepython}
+	\end{itemize}
+	\item Testar o programa manualmente e com testes unitários;
 	\item Criar o primeiro teste (\textit{test\_client}) de forma a que, a cada método que é construido, se possa testar imediatamente se esse método cumpre exatamente com o que estava especificado;
 	\item Criar o pydoc para a aplicação e para os testes;
 	\item Ajustar os métodos de forma a que a que passem a todos testes;
-	\item Testar o programa manualmente e com testes unitários;
-	\item Iterar o processo de debugging e correção de erros.
+	\item Iterar o processo de debugging e correção de erros. (\cite[\textit{Stack Overflow}]{stackoverflow})
 \end{enumerate}
 
 
@@ -367,6 +380,8 @@ Criando-se dois novos ficheiros na pasta onde está a aplicação:
 \chapter{Conclusão}
 \label{chap.conclusao}
 Dos testes feitos pode concluir-se que a latência depende diretamente da distância geográfica ao local do \textit{target\_server}, sendo tanto maior quanto maior a distância entre a máquina e o server. Por outro lado parece existir uma inconsistência na relação entre a distância e a velocidade de \textit{download} o que pode indicar que está dependa da qualidade da infraestrutura do país em questão.
+
+
 \chapter*{Acrónimos}
 \begin{acronym}
 \acro{ua}[UA]{Universidade de Aveiro}
@@ -377,6 +392,26 @@ Dos testes feitos pode concluir-se que a latência depende diretamente da distâ
 \acro{csv}[CSV]{Comma Separated Values}
 \end{acronym}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+\bibliographystyle{plain}
+\bibliography{bibliografia}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
