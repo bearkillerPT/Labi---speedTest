@@ -196,7 +196,7 @@ Este método serve para calcular a largura de banda e latência da conexão a um
 Cálculo de largura de banda.\\
 Este método pede ao \textit{target\_server} um download de 100 mb. Durante 10 segundos é feito download dos dados enviados pelo mesmo. No final dos 10 segundos, se o download tiver sido superior a 10mb regista, caso contrário, discarta este servidor.\\
 \textbf{Argumentos}: \textit{target\_server}(dicionário com informação sobre o target server). 
-\textbf{Retorna}: (float) $1/\textit{time\_download\_1mb}$
+\textbf{Retorna}: (float) $\textit{len(buffer)}/\textit{(e\_time * MB)}$
 
 \subsection{calc\_latency()}
 \label{subsec.latency}
